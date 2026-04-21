@@ -1,6 +1,6 @@
 "use client";
 import { Card, Badge, PageHeader } from "@/components/ui";
-import { TrendingUp, TrendingDown, Users, Target, AlertTriangle, DollarSign, ArrowUpRight } from "lucide-react";
+import { TrendingUp, TrendingDown, Users, Target, AlertTriangle, RussianRuble, ArrowUpRight } from "lucide-react";
 import { revenueData, funnelData, aiInsights, channelData } from "@/lib/mock-data";
 import { Area, AreaChart, ResponsiveContainer, XAxis, YAxis, Tooltip, BarChart, Bar, PieChart, Pie, Cell, Legend } from "recharts";
 
@@ -11,7 +11,7 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-4 gap-4 mb-6">
         {[
-          { title: "Выручка за месяц", value: "₽ 124.5M", change: "+12.3%", trend: "up", icon: DollarSign, color: "from-green-500 to-emerald-500" },
+          { title: "Выручка за месяц", value: "₽ 124.5M", change: "+12.3%", trend: "up", icon: RussianRuble, color: "from-green-500 to-emerald-500" },
           { title: "Активные лиды", value: "847", change: "+5.2%", trend: "up", icon: Users, color: "from-blue-500 to-indigo-500" },
           { title: "Конверсия", value: "3.8%", change: "-0.4%", trend: "down", icon: Target, color: "from-amber-500 to-orange-500" },
           { title: "Риски", value: "3", change: "требуют внимания", trend: "warning", icon: AlertTriangle, color: "from-red-500 to-pink-500" },

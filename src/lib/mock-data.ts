@@ -8,7 +8,7 @@ export const projects = [
   {
     id: "2", name: "Резиденция «Парк Авеню»", location: "Санкт-Петербург",
     status: "active", totalUnits: 124, soldUnits: 89, revenue: 2800_000_000,
-    image: "🏙", description: "Бизнес-класс с собственным парком",
+    image: "🌉", description: "Бизнес-класс с собственным парком",
     completion: 72, startSales: "Мар 2024", endSales: "Июн 2026",
   },
   {

@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/sidebar";
 import { Topbar } from "@/components/topbar";
 import { AIPanel } from "@/components/ai-panel";
+
+const inter = Inter({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "DevEstate AI — Operating System for Developers",
@@ -12,7 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru">
-      <body className="antialiased">
+      <body className={`${inter.variable} antialiased`}>
         <div className="flex h-screen overflow-hidden bg-slate-50 dark:bg-slate-950">
           <Sidebar />
           <div className="flex flex-1 flex-col overflow-hidden">

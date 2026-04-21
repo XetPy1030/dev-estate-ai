@@ -2,7 +2,7 @@
 import { Card, Badge, PageHeader, Button } from "@/components/ui";
 import { campaigns } from "@/lib/mock-data";
 import { formatMoney } from "@/lib/utils";
-import { Plus, Sparkles, TrendingUp, MousePointerClick, Users, DollarSign } from "lucide-react";
+import { Plus, Sparkles, TrendingUp, MousePointerClick, Users, RussianRuble } from "lucide-react";
 
 export default function Marketing() {
   const totalBudget = campaigns.reduce((s, c) => s + c.budget, 0);
@@ -22,7 +22,7 @@ export default function Marketing() {
 
       <div className="grid grid-cols-4 gap-4 mb-6">
         {[
-          { label: "Бюджет общий", value: formatMoney(totalBudget), icon: DollarSign, color: "from-blue-500 to-indigo-500" },
+          { label: "Бюджет общий", value: formatMoney(totalBudget), icon: RussianRuble, color: "from-blue-500 to-indigo-500" },
           { label: "Потрачено", value: formatMoney(totalSpent), icon: TrendingUp, color: "from-violet-500 to-purple-500" },
           { label: "Лидов привлечено", value: totalLeads.toString(), icon: Users, color: "from-amber-500 to-orange-500" },
           { label: "Конверсий", value: totalConv.toString(), icon: MousePointerClick, color: "from-green-500 to-emerald-500" },
