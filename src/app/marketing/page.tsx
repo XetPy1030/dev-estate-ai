@@ -31,14 +31,14 @@ export default function Marketing() {
             <div className={`flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br ${s.color} mb-3`}>
               <s.icon className="h-5 w-5 text-white" />
             </div>
-            <div className="text-2xl font-bold">{s.value}</div>
+            <div className="text-2xl font-bold text-slate-900 dark:text-white">{s.value}</div>
             <div className="text-xs text-slate-500">{s.label}</div>
           </Card>
         ))}
       </div>
 
       <Card>
-        <h3 className="font-semibold mb-4">Активные кампании</h3>
+        <h3 className="font-semibold mb-4 text-slate-900 dark:text-white">Активные кампании</h3>
         <div className="space-y-2">
           {campaigns.map((c) => {
             const progress = (c.spent / c.budget) * 100;
@@ -47,16 +47,16 @@ export default function Marketing() {
               <div key={c.id} className="rounded-lg border border-slate-200 p-4 hover:bg-slate-50 transition-colors dark:border-slate-800 dark:hover:bg-slate-800/50">
                 <div className="flex items-center justify-between mb-2">
                   <div>
-                    <div className="font-medium flex items-center gap-2">
+                    <div className="font-medium flex items-center gap-2 text-slate-900 dark:text-white">
                       {c.name}
                       <Badge variant={c.status === "active" ? "success" : "warning"}>{c.status === "active" ? "Активна" : "Пауза"}</Badge>
                     </div>
                     <div className="text-xs text-slate-500 mt-0.5">{c.channel} · {c.project}</div>
                   </div>
                   <div className="flex gap-6 text-right text-sm">
-                    <div><div className="text-xs text-slate-500">CTR</div><div className="font-semibold">{c.ctr}%</div></div>
-                    <div><div className="text-xs text-slate-500">Лиды</div><div className="font-semibold">{c.leads}</div></div>
-                    <div><div className="text-xs text-slate-500">CPL</div><div className="font-semibold">₽ {formatThousands(cpl)}</div></div>
+                    <div><div className="text-xs text-slate-500">CTR</div><div className="font-semibold text-slate-900 dark:text-white">{c.ctr}%</div></div>
+                    <div><div className="text-xs text-slate-500">Лиды</div><div className="font-semibold text-slate-900 dark:text-white">{c.leads}</div></div>
+                    <div><div className="text-xs text-slate-500">CPL</div><div className="font-semibold text-slate-900 dark:text-white">₽ {formatThousands(cpl)}</div></div>
                     <div><div className="text-xs text-slate-500">Конверсии</div><div className="font-semibold text-green-600">{c.conversions}</div></div>
                   </div>
                 </div>

@@ -45,15 +45,15 @@ export default function CRM() {
                       <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-indigo-400 to-purple-400 text-xs font-semibold text-white">
                         {lead.name.split(" ").map(n => n[0]).join("")}
                       </div>
-                      <div className="font-medium text-sm">{lead.name}</div>
+                      <div className="font-medium text-sm text-slate-900 dark:text-white">{lead.name}</div>
                     </div>
                   </td>
                   <td className="px-4 py-3 text-xs text-slate-600 dark:text-slate-400">
                     <div className="flex items-center gap-1"><Phone className="h-3 w-3" />{lead.phone}</div>
                     <div className="flex items-center gap-1 mt-1"><Mail className="h-3 w-3" />{lead.email}</div>
                   </td>
-                  <td className="px-4 py-3 text-sm">{lead.project}</td>
-                  <td className="px-4 py-3"><div className="flex items-center gap-2"><div className={`h-2 w-2 rounded-full ${stage.color}`} /><span className="text-sm">{stage.name}</span></div></td>
+                  <td className="px-4 py-3 text-sm text-slate-700 dark:text-slate-300">{lead.project}</td>
+                  <td className="px-4 py-3"><div className="flex items-center gap-2"><div className={`h-2 w-2 rounded-full ${stage.color}`} /><span className="text-sm text-slate-700 dark:text-slate-300">{stage.name}</span></div></td>
                   <td className="px-4 py-3 font-semibold text-indigo-600 dark:text-indigo-400">{formatMoney(lead.budget)}</td>
                   <td className="px-4 py-3">
                     <div className={`inline-flex items-center justify-center w-12 h-7 rounded font-bold text-xs ${

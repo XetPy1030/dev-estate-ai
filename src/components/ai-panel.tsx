@@ -66,8 +66,8 @@ export function AIPanel() {
           <Sparkles className="h-4 w-4 text-white" />
         </div>
         <div className="flex-1">
-          <div className="text-sm font-semibold">AI-ассистент</div>
-          <div className="text-[10px] text-slate-500">Claude Sonnet 4.5 · Online</div>
+          <div className="text-sm font-semibold text-slate-900 dark:text-white">AI-ассистент</div>
+          <div className="text-[10px] text-slate-500 dark:text-slate-400">Claude Sonnet 4.5 · Online</div>
         </div>
         <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
       </div>

@@ -53,7 +53,7 @@ export default function AssistantPage() {
           <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 mb-4">
             <Sparkles className="h-8 w-8 text-white" />
           </div>
-          <h2 className="text-2xl font-bold mb-2">Чем могу помочь?</h2>
+          <h2 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Чем могу помочь?</h2>
           <p className="text-slate-500 mb-8">Я знаю всё о ваших проектах, клиентах и кампаниях</p>
           <div className="grid grid-cols-2 gap-3 max-w-2xl w-full">
             {examples.map((ex) => (
@@ -63,7 +63,7 @@ export default function AssistantPage() {
                   <ex.icon className="h-5 w-5 text-indigo-500" />
                 </div>
                 <div>
-                  <div className="font-medium text-sm">{ex.title}</div>
+                  <div className="font-medium text-sm text-slate-900 dark:text-white">{ex.title}</div>
                   <div className="text-xs text-slate-500 mt-0.5">{ex.desc}</div>
                 </div>
               </button>

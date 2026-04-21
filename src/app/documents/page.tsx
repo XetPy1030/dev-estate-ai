@@ -53,7 +53,7 @@ export default function Documents() {
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-indigo-500" />
-              <h3 className="font-semibold">Сгенерированное КП</h3>
+              <h3 className="font-semibold text-slate-900 dark:text-white">Сгенерированное КП</h3>
               <Badge variant="info">Claude Sonnet 4.5</Badge>
             </div>
             {generated && <Button variant="secondary" size="sm"><Download className="h-4 w-4" />Скачать PDF</Button>}
@@ -79,7 +79,7 @@ export default function Documents() {
               <div className={`flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br ${typeIcons[s.type].color} mb-3`}>
                 <Icon className="h-5 w-5 text-white" />
               </div>
-              <div className="text-2xl font-bold">{s.count}</div>
+              <div className="text-2xl font-bold text-slate-900 dark:text-white">{s.count}</div>
               <div className="text-xs text-slate-500">{s.label}</div>
             </Card>
           );
@@ -87,7 +87,7 @@ export default function Documents() {
       </div>
 
       <Card>
-        <h3 className="font-semibold mb-4">Все документы</h3>
+        <h3 className="font-semibold mb-4 text-slate-900 dark:text-white">Все документы</h3>
         <div className="space-y-2">
           {documents.map((doc) => {
             const Icon = typeIcons[doc.type].icon;
@@ -98,7 +98,7 @@ export default function Documents() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <div className="font-medium text-sm truncate">{doc.title}</div>
+                    <div className="font-medium text-sm truncate text-slate-900 dark:text-white">{doc.title}</div>
                     {doc.generatedBy === "AI" && <Badge variant="info"><Sparkles className="h-3 w-3 mr-1" />AI</Badge>}
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5">{doc.project} · {doc.date} · {doc.size}</div>
