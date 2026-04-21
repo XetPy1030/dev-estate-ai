@@ -1,7 +1,6 @@
 import { NextRequest } from "next/server";
-import Anthropic from "@anthropic-ai/sdk";
-
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! });
+const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
+const MODEL = process.env.OPENROUTER_MODEL || "anthropic/claude-sonnet-4.5";
 
 const PROMPTS: Record<string, string> = {
   proposal: `Создай профессиональное коммерческое предложение в формате Markdown для клиента:
@@ -24,22 +23,64 @@ const PROMPTS: Record<string, string> = {
 };
 
 export async function POST(req: NextRequest) {
+  const apiKey = process.env.OPENROUTER_API_KEY;
+  if (!apiKey) {
+    return new Response("OPENROUTER_API_KEY is not set", { status: 500 });
+  }
+
   const { type } = await req.json();
   const prompt = PROMPTS[type] || PROMPTS.proposal;
 
-  const stream = await client.messages.stream({
-    model: "claude-sonnet-4-5",
-    max_tokens: 3000,
-    messages: [{ role: "user", content: prompt }],
+  const response = await fetch(OPENROUTER_URL, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+      "HTTP-Referer": "http://localhost:3000",
+      "X-Title": "DevEstate AI",
+    },
+    body: JSON.stringify({
+      model: MODEL,
+      stream: true,
+      max_tokens: 3000,
+      temperature: 0.6,
+      messages: [{ role: "user", content: prompt }],
+    }),
   });
 
+  if (!response.ok || !response.body) {
+    const text = await response.text().catch(() => "");
+    return new Response(`OpenRouter error: ${response.status} ${text}`, { status: 500 });
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
   const encoder = new TextEncoder();
+  let buffer = "";
+
   const readable = new ReadableStream({
     async start(controller) {
       try {
-        for await (const event of stream) {
-          if (event.type === "content_block_delta" && event.delta.type === "text_delta") {
-            controller.enqueue(encoder.encode(event.delta.text));
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          buffer = lines.pop() ?? "";
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed.startsWith("data:")) continue;
+            const data = trimmed.replace(/^data:\s*/, "");
+            if (data === "[DONE]") continue;
+            try {
+              const json = JSON.parse(data);
+              const delta = json?.choices?.[0]?.delta?.content;
+              if (typeof delta === "string" && delta.length > 0) {
+                controller.enqueue(encoder.encode(delta));
+              }
+            } catch {
+              // Ignore non-JSON SSE lines
+            }
           }
         }
       } finally {
@@ -48,5 +89,11 @@ export async function POST(req: NextRequest) {
     },
   });
 
-  return new Response(readable, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
+  return new Response(readable, {
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "no-cache",
+      Connection: "keep-alive",
+    },
+  });
 }

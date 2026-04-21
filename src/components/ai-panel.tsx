@@ -53,7 +53,7 @@ export function AIPanel() {
         });
       }
     } catch {
-      setMessages((p) => [...p.slice(0, -1), { role: "assistant", content: "⚠️ Ошибка. Проверьте API-ключ Claude в `.env.local`" }]);
+      setMessages((p) => [...p.slice(0, -1), { role: "assistant", content: "⚠️ Ошибка. Проверьте OPENROUTER_API_KEY в `.env.local`" }]);
     } finally {
       setLoading(false);
     }
