@@ -8,7 +8,7 @@ type Message = { role: "user" | "assistant"; content: string };
 const quickActions = [
   { icon: Lightbulb, label: "Анализ", prompt: "Проанализируй текущие продажи и выяви 3 ключевые проблемы воронки" },
   { icon: FileText, label: "Создать КП", prompt: "Подготовь шаблон коммерческого предложения для премиум-клиента на квартиру 120 м² за 25 млн ₽" },
-  { icon: Zap, label: "Идеи", prompt: "Дай 5 креативных идей для повышения конверсии лидов в ЖК премиум-класса" },
+  { icon: Zap, label: "Идеи", prompt: "Дай 5 креативных идей для повышения конверсии клиентов в ЖК премиум-класса" },
 ];
 
 export function AIPanel() {

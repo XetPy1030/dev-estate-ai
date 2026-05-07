@@ -9,7 +9,7 @@ import ReactMarkdown from "react-markdown";
 const performanceData = [
   { metric: "Конверсия", current: 78, target: 100 },
   { metric: "Скорость", current: 65, target: 100 },
-  { metric: "Качество лидов", current: 82, target: 100 },
+  { metric: "Качество клиентов", current: 82, target: 100 },
   { metric: "ROI", current: 91, target: 100 },
   { metric: "Удержание", current: 70, target: 100 },
 ];
@@ -28,7 +28,7 @@ export default function Analytics() {
         body: JSON.stringify({
           message: `Проанализируй данные продаж и маркетинга:
 Выручка по месяцам: ${JSON.stringify(revenueData)}
-Источники лидов: ${JSON.stringify(channelData)}
+Источники клиентов: ${JSON.stringify(channelData)}
 Воронка: ${JSON.stringify(funnelData)}
 
 Дай 5 ключевых инсайтов в формате Markdown с цифрами и конкретными рекомендациями.`,
@@ -103,7 +103,7 @@ export default function Analytics() {
       </div>
 
       <Card>
-        <h3 className="font-semibold mb-4 text-slate-900 dark:text-white">Лиды по источникам</h3>
+        <h3 className="font-semibold mb-4 text-slate-900 dark:text-white">Клиенты по источникам</h3>
         <ResponsiveContainer width="100%" height={250}>
           <BarChart data={channelData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />

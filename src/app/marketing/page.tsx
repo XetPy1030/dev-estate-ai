@@ -24,7 +24,7 @@ export default function Marketing() {
         {[
           { label: "Бюджет общий", value: formatMoney(totalBudget), icon: RussianRuble, color: "from-blue-500 to-indigo-500" },
           { label: "Потрачено", value: formatMoney(totalSpent), icon: TrendingUp, color: "from-violet-500 to-purple-500" },
-          { label: "Лидов привлечено", value: totalLeads.toString(), icon: Users, color: "from-amber-500 to-orange-500" },
+          { label: "Потенциальных клиентов", value: totalLeads.toString(), icon: Users, color: "from-amber-500 to-orange-500" },
           { label: "Конверсий", value: totalConv.toString(), icon: MousePointerClick, color: "from-green-500 to-emerald-500" },
         ].map((s) => (
           <Card key={s.label}>
@@ -42,7 +42,7 @@ export default function Marketing() {
         <div className="space-y-2">
           {campaigns.map((c) => {
             const progress = (c.spent / c.budget) * 100;
-            const cpl = c.leads > 0 ? Math.round(c.spent / c.leads) : 0;
+            const costPerClient = c.leads > 0 ? Math.round(c.spent / c.leads) : 0;
             return (
               <div key={c.id} className="rounded-lg border border-slate-200 p-4 hover:bg-slate-50 transition-colors dark:border-slate-800 dark:hover:bg-slate-800/50">
                 <div className="flex items-center justify-between mb-2">
@@ -55,8 +55,8 @@ export default function Marketing() {
                   </div>
                   <div className="flex gap-6 text-right text-sm">
                     <div><div className="text-xs text-slate-500">CTR</div><div className="font-semibold text-slate-900 dark:text-white">{c.ctr}%</div></div>
-                    <div><div className="text-xs text-slate-500">Лиды</div><div className="font-semibold text-slate-900 dark:text-white">{c.leads}</div></div>
-                    <div><div className="text-xs text-slate-500">CPL</div><div className="font-semibold text-slate-900 dark:text-white">₽ {formatThousands(cpl)}</div></div>
+                    <div><div className="text-xs text-slate-500">Клиенты</div><div className="font-semibold text-slate-900 dark:text-white">{c.leads}</div></div>
+                    <div><div className="text-xs text-slate-500">Цена клиента</div><div className="font-semibold text-slate-900 dark:text-white">₽ {formatThousands(costPerClient)}</div></div>
                     <div><div className="text-xs text-slate-500">Конверсии</div><div className="font-semibold text-green-600">{c.conversions}</div></div>
                   </div>
                 </div>

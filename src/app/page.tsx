@@ -12,7 +12,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-4 gap-4 mb-6">
         {[
           { title: "Выручка за месяц", value: "₽ 124.5M", change: "+12.3%", trend: "up", icon: RussianRuble, color: "from-green-500 to-emerald-500" },
-          { title: "Активные лиды", value: "847", change: "+5.2%", trend: "up", icon: Users, color: "from-blue-500 to-indigo-500" },
+          { title: "Потенциальные клиенты", value: "847", change: "+5.2%", trend: "up", icon: Users, color: "from-blue-500 to-indigo-500" },
           { title: "Конверсия", value: "3.8%", change: "-0.4%", trend: "down", icon: Target, color: "from-amber-500 to-orange-500" },
           { title: "Риски", value: "3", change: "требуют внимания", trend: "warning", icon: AlertTriangle, color: "from-red-500 to-pink-500" },
         ].map((kpi) => (
@@ -85,7 +85,7 @@ export default function Dashboard() {
         </Card>
 
         <Card>
-          <h3 className="font-semibold text-slate-900 dark:text-white mb-4">Источники лидов</h3>
+          <h3 className="font-semibold text-slate-900 dark:text-white mb-4">Источники клиентов</h3>
           <ResponsiveContainer width="100%" height={260}>
             <PieChart>
               <Pie data={channelData} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={50} outerRadius={80}>

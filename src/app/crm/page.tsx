@@ -7,7 +7,7 @@ import { Search, Plus, Phone, Mail, Sparkles } from "lucide-react";
 export default function CRM() {
   return (
     <div>
-      <PageHeader title="Клиенты (CRM)" subtitle={`Всего лидов: ${leads.length} · Средний скоринг: ${Math.round(leads.reduce((s,l)=>s+l.score,0)/leads.length)}`}
+      <PageHeader title="Клиенты (CRM)" subtitle={`Всего клиентов: ${leads.length} · Средний скоринг: ${Math.round(leads.reduce((s,l)=>s+l.score,0)/leads.length)}`}
         actions={<Button><Plus className="h-4 w-4" />Добавить клиента</Button>}
       />
 
